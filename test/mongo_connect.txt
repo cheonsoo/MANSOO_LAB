@@ -1,0 +1,26 @@
+### MongoDB
+
+
+
+./mongod --config /usr/local/var/mongodb/config/brandportal.cfg
+
+
+/Users/cpark/Downloads/test/db/0
+
+/Users/cpark/Downloads/test/log/brandportal.log
+
+./mongod --dbpath yourfolder --logpath myfile.log --logappend
+
+
+
+./mongod --dbpath /Users/cpark/Downloads/test/db/0 --logpath /Users/cpark/Downloads/test/log/brandportal.log --logappend
+
+
+
+ulimit -n 2048 && /Users/cpark/workspace/git/Development-Binary-Mac/Binary/MongoDB/mongod --config /Users/cpark/workspace/git/B2LiNK-BrandPortal-Dev/MongoDB/3.4.5_x64__Mac/Config/B2LINK/0__MansooCustom.conf
+
+
+
+ulimit -n 2048 && /usr/local/var/mongodb/bin/mongod --config /Users/cpark/workspace/git/B2LiNK-BrandPortal-Dev/MongoDB/3.4.5_x64__Mac/Config/B2LINK/0__MansooCustom.conf
+
+mongo --host dds-bp150fe79aaec1c41.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p

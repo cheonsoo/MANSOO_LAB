@@ -1,0 +1,62 @@
+var SandBox = function(){			
+	var args = Array.prototype.slice.call(arguments),
+		callback = args.pop(),
+		modules = (args[0] && typeof args[0] === "string") ? args : args[0],
+		i;
+ 
+	if(!(this instanceof SandBox)){
+		return new SandBox(modules, callback);
+	}
+ 
+	if(!modules || modules === "*" || modules[0] === "*"){
+		modules = [];
+		for(i in SandBox.modules){
+			if(SandBox.modules.hasOwnProperty(i)){
+				modules.push(i);
+			}
+		}
+	}
+ 
+	for(i=0; i<modules.length; i++){
+		SandBox.modules[modules[i]](this);
+	}
+ 
+	if(callback !== undefined && typeof callback == "function"){ 
+		callback(this);
+	}
+};
+
+SandBox.prototype = {
+	design: "SandBox Pattern",
+	version: 1.10,
+	getName: function(){
+		return this.name;
+	},
+	getSandBox: function(){
+		console.log(this);
+	}
+}
+SandBox.modules = {};
+SandBox.modules.dom = function(box){
+	box.getElement = function(){};
+	box.getStyle = function(){};
+	box.foo = "bar";
+};
+SandBox.modules.event = function(box){
+	box.constructor.prototype.m = "mmm";
+	box.attachEvent = function(){ console.log("attachEvent!!")};
+	box.detachEvent = function(){ console.log("detachEvent!!")};
+};
+ 
+SandBox(['dom','event'],jaewonPlayGround)
+function jaewonPlayGround(box){
+	box.attachEvent();
+	box.getSandBox();
+	console.log(box.design)
+}
+SandBox(['dom','event'],jaewonPlayGround1)
+function jaewonPlayGround1(box){
+	box.detachEvent();
+	box.getSandBox();
+	console.log(box.design)
+}
