@@ -1,0 +1,314 @@
+<html>
+<script>
+
+var _timeout = 1;
+var _browser_mode = "mobile"; // pc, mobile, tablet
+var _image_mode = "one_image"
+
+var _orientation = ""; // portrait, landscape
+var _width_landscape = "";
+var _height_landscape = "";
+var _browser_width = "";
+var _browser_height = "";
+var _image_width = "";
+var _image_height = "";
+var _background_img = "a_man.jpg";
+var _background_img_landscape = "solid_snake.jpg";
+var _xbtn_img = "close_54x54.png";
+var _click_url = "http://google.com";
+
+
+
+function initialize_interstitial() {
+	
+	/*
+	var self = document.getElementsByClassName("interstitial_outer")[0];
+	if (self != undefined) {
+		document.body.removeChild(self);
+	}
+	*/
+	//console.log(window.orientation);
+	//screen.orientation.lock('landscape');
+	//console.log(getScreenMode());
+	
+	
+	
+	// Outer Div
+	var ele_div = document.createElement("div");
+	//ele_div.innerHTML = "test";
+	ele_div.className = "interstitial_outer";
+	//ele_div.id = "interstitial_outer";
+	ele_div.style.top = "-" + _browser_height + "px";
+	
+	
+	
+	// Content Div
+	var ele_content = document.createElement("div");
+	ele_content.className = "interstitial_content";
+	//ele_content.id = "interstitial_content";
+	
+	
+	
+	// X Button
+	var ele_xbtn = document.createElement("span");
+	ele_xbtn.className = "interstitial_xbtn";
+	ele_xbtn.addEventListener("click", close_interstial_ad);
+	/*
+	this.window.setTimeout(function() {
+		ele_xbtn.style.display = "block";
+	}, _timeout*1000);
+	*/
+
+	
+	// Image
+	var ele_img = document.createElement("div");
+	ele_img.className = "interstitial_div_img";
+	if (_image_mode == "two_image") {
+		if (_orientation == "portrait") {
+			ele_img.style.backgroundImage = "url(" + _background_img + ")";
+		} else {
+			ele_img.style.backgroundImage = "url(" + _background_img_landscape + ")";
+		}
+		
+	} else {
+		ele_img.style.backgroundImage = "url(" + _background_img + ")";
+	}
+	
+	ele_img.onclick = function(evt) {
+		console.log(evt.currentTarget.className);
+		if (evt.currentTarget.className != "interstitial_xbtn") {
+			location.href = _click_url;
+		}
+	}
+	
+	
+	
+	// Organize Ad
+	ele_content.appendChild(ele_img);
+	ele_img.appendChild(ele_xbtn);
+	ele_div.appendChild(ele_content);
+	document.body.appendChild(ele_div);
+	
+	
+	
+	// Animation
+	ele_div.classList.add("move");
+	
+}
+
+function init_variables() {
+	getScreenMode();
+	figureoutUserAgent();
+	getImgSize();
+}
+
+function getScreenMode() {
+
+	// Safari
+	var width = window.document.width;
+	var height = window.document.height;
+	
+	// Chrome
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+	
+	_browser_width = width;
+	_browser_height = height;
+	
+	if (width < height) {
+		_orientation = "portrait";
+	} else {
+		_orientation = "landscape";
+	}
+}
+
+function figureoutUserAgent() {
+	//console.log(navigator.userAgent);
+}
+
+function close_interstial_ad(evt) {
+	console.log("close_interstial_ad");
+	evt.currentTarget.parentElement.parentElement.parentElement.remove();
+	evt.stopPropagation();
+}
+
+function getImgSize() {
+	var img = new Image();
+	img.src = _background_img;
+	
+	img.onload = function() {
+		_image_width = img.width;
+		_image_height = img.height;
+	    console.log("original image width : " + this.width);
+		console.log("original image height : " + this.height);
+		
+		var x_ratio = (img.width / img.height * 1).toFixed(2);
+		
+		getScreenMode();
+		
+		// width : height = x_ratio : 1
+		_width_landscape = _browser_height * x_ratio;
+		console.log("width landscape : " + _width_landscape);
+		
+		var outer = document.querySelector(".interstitial_outer");
+		var content = document.querySelector(".interstitial_content");
+		var content_img = document.querySelector(".interstitial_div_img");
+		
+		if (_orientation == "portrait") {
+			
+			console.log("portrait");
+			console.log(_image_mode);
+			
+			content.style.width = "100%";
+			content_img.style.backgroundImage = "url(" + _background_img + ")";
+			
+			
+			
+			
+			
+		} else {
+			
+			console.log("landscape");
+			console.log(_image_mode);
+			
+			if (_image_mode == "two_image") {
+				content.style.width = "100%";
+				content_img.style.backgroundImage = "url(" + _background_img_landscape + ")";
+			} else {
+				content.style.width = _width_landscape;
+				content_img.style.backgroundImage = "url(" + _background_img + ")";
+			}
+			
+		}
+	};
+	
+}
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    var interval = setInterval(function (evt) {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
+        //seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        if (timer < 0) {
+            //timer = duration;
+            document.querySelector(".interstitial_xbtn").innerHTML = "";
+            document.querySelector(".interstitial_xbtn").style.backgroundImage = "url(" + _xbtn_img + ")";
+        	window.clearInterval(interval);
+        } else {
+       		display.textContent = seconds;
+        	timer--;
+        }
+        
+    }, 1000);
+}
+
+function Box() {
+	var animationStartTime = 0;
+	var animationDuration = 50;
+	var target = document.querySelector('.interstitial_outer');
+	
+	this.startAnimation = function() {
+		animationStartTime = Date.now();
+		requestAnimationFrame(update);
+	};
+	
+	function update() {
+		var currentTime = Date.now();
+		var positionInAnimation = (currentTime - animationStartTime) / animationDuration;
+		
+		//var xPosition = positionInAnimation * 100;
+		var xPosition = 0;
+		var yPosition = positionInAnimation * 100;
+		target.style.transform = 'translate(' + xPosition + 'px, ' + yPosition + 'px)';
+		
+		if (yPosition < _browser_height) {
+			requestAnimationFrame(update);
+		} else {
+			target.style.transform = 'translate(0px, ' + _browser_height + 'px)';
+		}
+		
+		/*
+		if (positionInAnimation <= 1) {
+			requestAnimationFrame(update);
+		}
+		*/
+	}
+}
+
+window.onload = function() {
+	init_variables();
+	
+	//console.log("Initialize interstitial ad");
+	initialize_interstitial();
+	
+	
+	window.addEventListener("resize", function() {
+		console.log("rotated");
+		getImgSize();
+	});
+	
+	var box = new Box();
+	box.startAnimation();
+	
+    //display = document.querySelector('#time');
+    display = document.querySelector('.interstitial_xbtn');
+	startTimer(_timeout, display);
+}
+</script>
+
+<style>
+.interstitial_outer {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background: #FFF;
+	color: #000;
+	overflow: hidden;
+}
+.interstitial_content {
+	height: 100%;
+    margin: auto;
+}
+.interstitial_xbtn {
+	/*background-image:url(../../img/close_54x54.png);*/
+	width: 54px;
+   	height: 54px;
+   	/*display: none;*/
+   	float: right;
+   	z-index: 11111;
+   	text-align: center;
+    font-size: 45px;
+    font-weight: bolder;
+    color: #FFF;
+}
+.interstitial_img {
+	width: 100%;
+	height: 100%;
+}
+
+.interstitial_div_img {
+	/*background-image:url(../../img/a_man.jpg);*/
+	width: 100%;
+    height: 100%;
+    background-repeat: round;
+    cursor: pointer;
+    z-index: 111;
+}
+
+</style>
+
+<body>
+	<div style="font-size:100px; text-align: center;">
+		<h1>TEST</h1>
+	</div>
+	
+	<div id="time" style="position: absolute; top: 0px; left: 0px;"></div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<html>
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	
+	<script type='text/javascript' type='text/javascript' src='../js/jquery.dataTables.min.js'></script>
+	<link rel='stylesheet' type='text/css' href='../css/jquery.dataTables.min.css'>
+	<script type="text/javascript">
+		if (document.readyState !== "complete") {
+		    addEvent(window, "load", function() {
+		    	drawResultTable();
+		    	$("#resultTable").dataTable();
+		    });
+		}
+		function addEvent(element, event, func) {
+			if (element.addEventListener) {
+				element.addEventListener(event, func, true);
+			} else if (element.attachEvent) {
+				element.attachEvent("on" + event, func);
+			}
+		}
+		function drawResultTable() {
+			
+			var response = {"took":6,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":7.2490096,"hits":[{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}}]}}
+			//var res = $.parseJSON(response);
+			
+			// Head
+			var thead = document.createElement("thead");
+			var thead_tr = document.createElement("tr");
+			var thead_td;
+			$.each(response.hits.hits, function(idx, item) {
+				//console.log(item._source);
+				$.each(item._source, function(key, value) {
+					//console.log(key, value);
+					
+					thead_td = document.createElement("td");
+					thead_td.innerHTML = key;
+					thead_tr.appendChild(thead_td);
+					
+				});
+				thead.appendChild(thead_tr);
+				return false;
+			});
+			
+			// Body
+			var tbody = document.createElement("tbody");
+			var tbody_tr;
+			var tbody_td;
+			$.each(response.hits.hits, function(idx, item) {
+				tbody_tr = document.createElement("tr");
+				$.each(item._source, function(key, value) {
+					//console.log(key, value);
+					
+					tbody_td = document.createElement("td");
+					tbody_td.innerHTML = value;
+					tbody_tr.appendChild(tbody_td);
+					
+				});
+				tbody.appendChild(tbody_tr);
+			});
+			
+			$("#resultTable").append(thead);
+			$("#resultTable").append(tbody);
+			
+		}
+		function drawResultTable_2() {
+			
+			var response = "{'took':6,'timed_out':false,'_shards':{'total':5,'successful':5,'failed':0},'hits':{'total':1,'max_score':7.2490096,'hits':[{'_index':'01~analytics','_type':'Advertiser','_id':'25','_score':7.2490096,'_source':{'_ADVERTISERKEY':25,'ID':'unknown_advertiser','NAME':'unknown_advertiser','BILLINGMETHOD':'M','CURRENCY':'USD','EMAIL':null,'PHONE':null,'FAX':null,'HOMEPAGE':null,'ISGLOBALADVERTISER':'N','WHENCREATED':'04/23/2009 12:00:00','WHENMODIFIED':'04/23/2009 12:00:00','WHOCREATED':'realmedia','WHOMODIFIED':'realmedia'}}]}}";
+			
+			// thead
+			var thead = document.createElement("thead");
+			var thead_tr = document.createElement("tr");
+			
+			// Col 1
+			var thead_td = document.createElement("td");
+			thead_td.innerHTML = "test";
+			thead_tr.appendChild(thead_td);
+			
+			// Col 2
+			thead_td = document.createElement("td");
+			thead_td.innerHTML = "test1";
+			thead_tr.appendChild(thead_td);
+			
+			thead.appendChild(thead_tr);
+			
+			// tbody
+			var tbody = document.createElement("tbody");
+			var tbody_tr = document.createElement("tr");
+			
+			var tbody_td = document.createElement("td");
+			tbody_td.innerHTML = "test_body";
+			tbody_tr.appendChild(tbody_td);
+			
+			tbody_td = document.createElement("td");
+			tbody_td.innerHTML = "test_body 2";
+			tbody_tr.appendChild(tbody_td);
+			
+			tbody.appendChild(tbody_tr);
+			
+			$("#resultTable").append(thead);
+			$("#resultTable").append(tbody);
+		}
+		function exportResultToExcel() {
+			
+			console.log($("#resultTable").html());
+		}
+	</script>
+</head>
+<body>
+	
+	<h3>RESULT</h3>
+	
+	<div>
+		<input type="button" id="exportResultToExcelBtn" value="export" onclick="exportResultToExcel()" />
+	</div>
+	
+	<div id="resultContainer">
+		<table id="resultTable"></table>
+	</div>
+	
+	
+	
+</body>
+</html>

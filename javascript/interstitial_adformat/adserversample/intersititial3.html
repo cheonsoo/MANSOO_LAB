@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<script type="text/javascript">
+		sas_tmstp=Math.round(Math.random()*10000000000);
+		sas_masterflag=1;
+		function sasmobile(sas_pageid,sas_formatid,sas_target) {
+			 if (sas_masterflag==1) {
+			 	sas_masterflag=0;
+			 	sas_master='M';
+			 } else {
+			 	sas_master='S';
+			 };
+
+			 document.write('<scr'+'ipt src="SmartInterstitialConf.js"></scr'+'ipt>');
+		 	//document.write('<scr'+'ipt src="http://www7.smartadserver.com/call2/pubmj/'+sas_pageid+'/'+sas_formatid+'/'+sas_master+'/'+sas_tmstp+'/'+escape(sas_target)+'?"></scr'+'ipt>');
+		}
+
+		function sascc(sas_imageid,sas_pageid) {
+			img=new Image();
+			img.src='http://www7.smartadserver.com/h/mcp?imgid='+sas_imageid+'&pgid='+sas_pageid+'&uid=[uid]&tmstp='+sas_tmstp+'&tgt=[targeting]';
+		}
+	</script>
+</head>
+
+<style>
+	img {width:100%;height:100%;}
+</style>
+
+<body>
+
+	<script type="text/javascript">
+		sas_pageid='29740/(mobile-interstitial-two-creatives)';	// Page : Demo_mobile/mobile-interstitial-two-creatives (PageID=582136)
+		sas_formatid=8459;		// Format : mobile1 1x1
+		sas_target='';			// Targeting
+		sasmobile(sas_pageid, sas_formatid, sas_target);
+	</script>
+
+	<noscript>
+		<a href="http://www7.smartadserver.com/call2/pubjumpmi/29740/(mobile-interstitial-two-creatives)/8459/M/[timestamp]/?" target="_blank">
+		<img src="http://www7.smartadserver.com/call2/pubmi/29740/(mobile-interstitial-two-creatives)/8459/M/[timestamp]/?" border="0" alt="" /></a>
+	</noscript>
+
+	<!--
+	<img src="image/iframe-page.png" border="0" alt="image" />
+	-->
+
+</body>
+</html>

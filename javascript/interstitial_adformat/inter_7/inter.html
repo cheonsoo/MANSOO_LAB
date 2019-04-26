@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="appnexus_interstitial_ad_1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		window.onload = function() {
+			// !CAUTION : _timer_xbtn < _timer_close
+			aia.AppNexInterstitial.conf._timer_xbtn = 1;
+			aia.AppNexInterstitial.conf._timer_close = 15;
+			aia.AppNexInterstitial.conf._bgopacity = 0.5;
+			aia.AppNexInterstitial.conf._bgcolor = "#000000";
+			aia.AppNexInterstitial.conf._click_url = "http://google.com";
+			// !CAUTION : mobile_portrait, mobile_landscape, tablet_portrait, tablet_landscape
+			//aia.AppNexInterstitial.conf._adImages = [ "mobile_portrait.jpg" ];
+			//aia.AppNexInterstitial.conf._adImages = [ "mobile_portrait.jpg", "mobile_landscape.jpg" ];
+			aia.AppNexInterstitial.conf._adImages = [ "mobile_portrait.jpg", "mobile_landscape.jpg", "tablet_portrait.png", "tablet_landscape.jpg" ];
+			aia.AppNexInterstitial.init();
+		}
+	</script>
+</head>
+<body style="background-color: #DDD; text-align: left;">
+	<div style="font-size:10px; text-align: left;">
+		<a href="http://google.com">google</a>
+		<h1>TEST1</h1>
+	</div>
+</body>
+</html>

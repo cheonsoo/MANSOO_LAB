@@ -1,0 +1,213 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="./jOrgChart-master/jquery.jOrgChart.js"></script>
+<link rel="stylesheet" href="./jOrgChart-master/example/css/jquery.jOrgChart.css"/>
+<link rel="stylesheet" href="./jOrgChart-master/example/css/custom.css"/>
+
+<script type="text/javascript">
+
+    function showPeopleDetails() {
+
+
+        var body = $("body");
+
+        var x = event.clientY + 20;
+        var y = event.clientX - 20;
+
+        var detailsDiv;
+        if (body.find("#detailsDiv").length > 0) {
+            detailsDiv = $("#detailsDiv");
+        } else {
+            detailsDiv = $("<div>test</div>");
+            detailsDiv.attr("id", "detailsDiv");
+            detailsDiv.addClass("detailsDiv");
+        }
+
+        detailsDiv.css("top", x);
+        detailsDiv.css("left", y);
+
+        body.append(detailsDiv);
+    }
+
+    function removePeopleDetails() {
+        var body = $("body");
+        body.find("#detailsDiv").remove();
+    }
+
+    function drawTrees(b2linker) {
+
+        var outer = $("#treeDiv");
+
+        var ul_outer = $("<ul id='b2linker'></ul>");
+        var li_outer = $("<li></li>");
+
+        li_outer.html("B2LINK");
+        ul_outer.append(li_outer);
+        outer.append(ul_outer);
+
+        var ul_department = $("<ul></ul>");
+        $.each(b2linker.department, function(idx, department) {
+
+            var li_department = $("<li></li>");
+            li_department.html(department.name);
+            ul_department.append(li_department);
+            li_outer.append(ul_department);
+
+            var ul_team = $("<ul></ul>");
+            $.each(department.team, function(idx2, team) {
+
+                var li_team = $("<li></li>");
+                li_team.html(team.name);
+                ul_team.append(li_team);
+                li_department.append(ul_team);
+
+                var ul_member = $("<ul></ul>");
+                $.each(team.member, function(idx3, member) {
+
+                    var li_member = $("<li></li>");
+                    li_member.html(member.name);
+                    var thumbnail_img = $("<img class='people_thumbnail' src='" + member.thumnbail_img + "' onmousemove='showPeopleDetails()' onmouseout='removePeopleDetails()' />");
+                    li_member.append(thumbnail_img);
+                    ul_member.append(li_member);
+                    li_team.append(ul_member);
+
+                });
+
+                ul_department.append(li_department);
+            })
+
+        });
+
+        $("#b2linker").jOrgChart({
+//            dragAndDrop  : true
+        });
+
+    }
+
+</script>
+
+<div id="treeDiv"></div>
+
+<script type="text/javascript">
+
+    var cheonsoo = {
+        employee_no : "1",
+        thumnail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+        detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+        name : "cheonsoo",
+        company : "b2link",
+        department : "b2labs",
+        team : "api_lab",
+        cell : "82-10-8915-0008",
+        phone : "070-1234-5678",
+        sequence : 0
+    };
+
+    var department = {
+        name : "",
+        sequence : 0,
+        team : []
+    };
+
+    var team = {
+        member : []
+    };
+
+    var b2linker = {
+        department : [
+            {
+                name : "b2labs",
+                sequence : 0,
+                team : [
+                    {
+                        name : "api labs",
+                        sequence : 0,
+                        member : [
+                            {
+                                employee_no : "",
+                                thumnbail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                name : "cheonsoo",
+                                company : "b2link",
+                                department : "b2labs",
+                                team : "api_lab",
+                                cell : "82-10-8915-0008",
+                                phone : "070-1234-5678",
+                                sequence : 0
+                            }, {
+                                employee_no : "",
+                                thumnbail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                name : "mansoo",
+                                company : "b2link",
+                                department : "b2labs",
+                                team : "api_lab",
+                                cell : "82-10-1111-9999",
+                                phone : "070-1234-8888",
+                                sequence : 2
+                            }, {
+                                employee_no : "",
+                                thumnbail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                name : "100soo",
+                                company : "b2link",
+                                department : "b2labs",
+                                team : "api_lab",
+                                cell : "82-10-1111-9999",
+                                phone : "070-1234-8888",
+                                sequence : 2
+                            }, {
+                                employee_no : "",
+                                thumnbail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                name : "100soo",
+                                company : "b2link",
+                                department : "b2labs",
+                                team : "api_lab",
+                                cell : "82-10-1111-9999",
+                                phone : "070-1234-8888",
+                                sequence : 2
+                            }, {
+                                employee_no : "",
+                                thumnbail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                name : "100soo",
+                                company : "b2link",
+                                department : "b2labs",
+                                team : "api_lab",
+                                cell : "82-10-1111-9999",
+                                phone : "070-1234-8888",
+                                sequence : 2
+                            }
+                        ]
+                    }, {
+                        name : "SCM",
+                        member : [
+                            {
+                                employee_no : "",
+                                thumnbail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/01/BL_KHY.jpg",
+                                detail_img : "http://www.b2link.co.kr/wp-content/uploads/2016/06/BL_PCS1.jpg",
+                                name : "hyunyo",
+                                company : "b2link",
+                                department : "b2labs",
+                                team : "api_lab",
+                                cell : "82-10-1111-9999",
+                                phone : "070-1234-8888",
+                                sequence : 2
+                            }
+                        ]
+                    }
+                ]
+            }, {
+                name : "HR",
+                team : []
+            }, {
+                name : "LOGISTICS",
+                team : []
+            }
+        ]
+    };
+
+    jQuery(document).ready(function() {
+        drawTrees(b2linker);
+    });
+</script>

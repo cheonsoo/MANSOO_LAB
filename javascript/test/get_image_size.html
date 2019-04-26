@@ -1,0 +1,28 @@
+<script>
+function initialize_interstitial() {
+
+	var img = new Image();
+	img.src = "../img/a_man.jpg";
+	console.log(img.width);
+	console.log(img.height);
+	
+	// Outer Div
+	var ele_div = document.createElement("div");
+	ele_div.className = "interstitial_outer";
+
+	var ele_img = document.createElement("img");
+	ele_img.src = "../img/a_man.jpg";
+	ele_img.className = "interstitial_img";
+	ele_img.style.height = "100%";
+	ele_div.appendChild(ele_img);
+
+	document.body.appendChild(ele_div);
+}
+
+window.onload = function() {
+	initialize_interstitial();
+}
+</script>
+
+<body>
+</body>

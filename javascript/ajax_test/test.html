@@ -1,0 +1,109 @@
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+<script type="text/javascript">
+
+    function getToken() {
+        var requestUrl = "http://localhost:8893/api/auth/token";
+        var user = {
+            "id" : "cheonsoo@b2link.co.kr", "pw" : "0000"
+        };
+        $.ajax({
+            url: requestUrl,
+            type: "POST",
+            processData: false,
+            contentType: "application/json",
+            data: JSON.stringify(user)
+        }).fail(function(jqXHR, textStatus) {
+            console.log("fail", jqXHR);
+        }).done(function(res) {
+            var token = res.data.token;
+            console.log("here is your token! - ", token);
+        });
+    }
+
+    function getStock() {
+        var requestUrl = "http://localhost:8893/api/stock/quantity/BL01WWT01630002000";
+        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNoZW9uc29vQGIybGluay5jby5rciIsInBhc3N3b3JkIjoiJDJhJDEwJEJ0N3k0Q0ZENEhRLnJ6aExrenNpNnVWSm83L1BqS1lIVklSdzVsOUp6eTJBd3VsSGxQamF1IiwidXNlclR5cGUiOiJhZG1pbiIsImNoYW5uZWwiOiIiLCJpYXQiOjE0Njg0NjY1MDYsImV4cCI6MTcyNzY2NjUwNn0.P49nrivohY-NWKELoxNguJtXbilLT-so_pL3Pe1_7No";
+        $.ajax({
+            url: requestUrl,
+            type: "GET",
+            beforeSend: function(xhr){
+                xhr.setRequestHeader('Authorization', token);
+            }
+        }).fail(function(jqXHR, textStatus) {
+            console.log("fail", jqXHR);
+        }).done(function(res) {
+            var result = res.data;
+            console.log("This product has " + result.quantity + " in stock");
+        });
+    }
+
+    function getStocks() {
+        var requestUrl = "http://localhost:8893/api/stock/quantities";
+        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNoZW9uc29vQGIybGluay5jby5rciIsInBhc3N3b3JkIjoiJDJhJDEwJEJ0N3k0Q0ZENEhRLnJ6aExrenNpNnVWSm83L1BqS1lIVklSdzVsOUp6eTJBd3VsSGxQamF1IiwidXNlclR5cGUiOiJhZG1pbiIsImNoYW5uZWwiOiIiLCJpYXQiOjE0Njg0NjY1MDYsImV4cCI6MTcyNzY2NjUwNn0.P49nrivohY-NWKELoxNguJtXbilLT-so_pL3Pe1_7No";
+        var data = {"skus":[ "BL01STP00290013001","BL01STP00290013002", "BL01STP00290013003", "BL01STP00290013004" ]};
+        $.ajax({
+            url: requestUrl,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            beforeSend: function(xhr){
+                xhr.setRequestHeader('Authorization', token);
+            }
+        }).fail(function(jqXHR, textStatus) {
+            console.log("fail", jqXHR);
+        }).done(function(res) {
+            var result = res.data;
+            console.log(result);
+        });
+    }
+
+    function getOrder() {
+        var requestUrl = "http://localhost:8893/api/order/ORDER_TEST_1";
+        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNoZW9uc29vQGIybGluay5jby5rciIsInBhc3N3b3JkIjoiJDJhJDEwJEJ0N3k0Q0ZENEhRLnJ6aExrenNpNnVWSm83L1BqS1lIVklSdzVsOUp6eTJBd3VsSGxQamF1IiwidXNlclR5cGUiOiJhZG1pbiIsImNoYW5uZWwiOiIiLCJpYXQiOjE0Njg0NjY1MDYsImV4cCI6MTcyNzY2NjUwNn0.P49nrivohY-NWKELoxNguJtXbilLT-so_pL3Pe1_7No";
+        $.ajax({
+            url: requestUrl,
+            type: "GET",
+            beforeSend: function(xhr){
+                xhr.setRequestHeader('Authorization', token);
+            }
+        }).fail(function(jqXHR, textStatus) {
+            console.log("fail", jqXHR);
+        }).done(function(res) {
+            var result = res.data;
+            console.log("order information : ", result.order);
+        });
+    }
+
+    function putOrder() {
+        var requestUrl = "http://localhost:8893/api/order/orders";
+        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNoZW9uc29vQGIybGluay5jby5rciIsInBhc3N3b3JkIjoiJDJhJDEwJEJ0N3k0Q0ZENEhRLnJ6aExrenNpNnVWSm83L1BqS1lIVklSdzVsOUp6eTJBd3VsSGxQamF1IiwidXNlclR5cGUiOiJhZG1pbiIsImNoYW5uZWwiOiIiLCJpYXQiOjE0Njg0Nzg0NDYsImV4cCI6MTcyNzY3ODQ0Nn0.gTkm97h4LZdh3K_uVe1lplBqkcOG9-WPk5DPTqTKnv8";
+        var order_data = {"orders":[{"channel_code":9,"channel_name":"WEISHANG","shop_code":14,"shop_name":"WEISHANG","name":"陈巍","id_no":"371421198703010075","buyer_id":"","home_addr":"上海市上海市长宁区遵义路友谊新村1号404室","home_phone_no":"02-123-1234","cell_phone_no":"010-1234-1234","total_delivery_fee":122,"total_payment_price":507,"total_order_price":385,"total_channel_coupon":0,"total_shop_coupon":0,"order_no":"ORDER_TEST_1","order_status":"E","order_date":"2016-5-25 02:28:36","order_memo":"","return_status_display":"","payment_no":"F221D4791520160525000004","payment_method_company":"P003","sample_order_yn":"N","fake_order_yn":"N","sf_supply_fee":"","sf_invoice_no":"","order_product_table_pk":19936,"fqht_real_order_no":"","products":[{"product_code":"BL01STP00290013007","product_name":"基础面膜_10片 1","product_name_kr":"Ampoule Mask_10장","product_name_en":"Mediheal N.M.F Aquaring Ampoule Mask","product_concept":"기능성","product_package_weight_gram":111,"brand_name":"메디힐","brand_grade":"A","4th_category":"시트팩","option1":"","option2":"","option1_kr":"메디힐 I.P.I 라이트맥스 앰플 마스크","option2_kr":"Option 2","quantity":1,"product_price":55,"product_channel_coupon":11,"product_shop_coupon":21,"real_product_name":"Ampoule Mask(1박스)","customs_reported_price_fqht":0,"register_supply_price":9001,"product_status":"C","delivery_fee":100,"delivery_fee_type":"","delivery_msg":"memo","delivery_date":"2016-06-01 02:00:00","delivery_company":"Unknown delivery company","delivery_start_date":"2016-06-01 02:00:00","delivery_done_date":"2016-06-06 02:00:00","invoice_no":"12314128","invoice_input_date":"2016-06-03 02:00:00"},{"product_code":"BL01STP00290013004","product_name":"基础面膜_10片 1","product_name_kr":"Ampoule Mask_10장","product_name_en":"Mediheal N.M.F Aquaring Ampoule Mask","product_concept":"기능성","product_package_weight_gram":114,"brand_name":"메디힐","brand_grade":"A","4th_category":"시트팩","option1":"","option2":"","option1_kr":"메디힐 I.P.I 라이트맥스 앰플 마스크","option2_kr":"Option 2","quantity":4,"product_price":55,"product_channel_coupon":14,"product_shop_coupon":24,"real_product_name":"Ampoule Mask(1박스)","customs_reported_price_fqht":0,"register_supply_price":9001,"product_status":"W","delivery_fee":100,"delivery_fee_type":"","delivery_msg":"memo","delivery_date":"2016-06-01 02:00:00","delivery_company":"Unknown delivery company","delivery_start_date":"2016-06-01 02:00:00","delivery_done_date":"2016-06-06 02:00:00","invoice_no":"","invoice_input_date":"2016-06-03 02:00:00"}]}]};
+        $.ajax({
+            url: requestUrl,
+            type: "PUT",
+            processData: false,
+            contentType: "application/json",
+            data : JSON.stringify(order_data),
+            beforeSend: function(xhr){
+                xhr.setRequestHeader('Authorization', token);
+                xhr.setRequestHeader('Accept', "application/json");
+                xhr.setRequestHeader('Content-Type', "application/json");
+            }
+        }).fail(function(jqXHR, textStatus) {
+            console.log("fail", jqXHR);
+        }).done(function(res) {
+            var result = res.data;
+            console.log("result : ", result);
+        });
+    }
+
+
+
+    $(document).ready(function() {
+//        getToken();
+        putOrder();
+//        getOrder();
+//        getStock();
+//        getStocks();
+    });
+</script>

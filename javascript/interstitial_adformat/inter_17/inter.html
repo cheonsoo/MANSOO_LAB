@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="appnexus_interstitial_ad_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+if (document.readyState !== "complete") {
+    addEvent(window, "load", function() {
+    	loadInterstitial();
+    });
+}
+function addEvent(element, event, func) {
+	if (element.addEventListener) {
+		element.addEventListener(event, func, true);
+	} else if (element.attachEvent) {
+		element.attachEvent("on" + event, func);
+	}
+}
+function loadInterstitial() {
+	var APPNEXUS_INTERSTITIAL_AD_PREVIEW = AppNexusAdTemplate;
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._timer_xbtn = 0;
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._show_close_x = true;
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._timer_close = 200;
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._bg_opacity = 0.5;
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._bg_color = "#000000";
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._click_url = "http://google.com";
+	//APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._adImages = [ "mobile_portrait.jpg" ];
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.conf._adImages     = [ 
+'http://01.uiint.dev.nym2.oasnexus.net/richmedia/FileDownload/42646d334541614c42716e415972476a61764747315432695a694a566d7349754749436e2f42536f4b4e493d/mobile_portrait.jpg',
+'http://01.uiint.dev.nym2.oasnexus.net/richmedia/FileDownload/42646d334541614c42716e415972476a61764747315432695a694a566d7349754749436e2f42536f4b4e493d/mobile_landscape.jpg'];
+	APPNEXUS_INTERSTITIAL_AD_PREVIEW.AppNexInterstitial.init();
+}
+</script>
+</head>
+<body style="background-color: #DDD; text-align: left;">
+	<div style="font-size:10px; text-align: left;">
+		<a href="http://google.com">google</a>
+		<h1>TEST1</h1>
+	</div>
+	<div id="testdiv" style="fond-size: 50px"></div>
+	
+	<iframe></iframe>
+	
+</body>
+</html>

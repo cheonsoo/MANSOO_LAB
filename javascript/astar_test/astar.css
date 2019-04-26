@@ -1,0 +1,26 @@
+.map {
+	display: block;
+}
+.node {
+	display: block;
+	width: 10px;
+	height: 10px;
+    border: 1px solid #bbb;
+    float: left;
+    line-height: 12px;
+    font-size: 10px;
+    margin: 1px;
+}
+.row {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	/* visibility: hidden; */
+}
+.wall {
+	background-color: #d9d9d9;
+}
+.start {
+	background-color: red;
+}

@@ -1,0 +1,36 @@
+<script>
+/*
+function hex2rgb( $colour ) {
+    if ( $colour[0] == '#' ) {
+            $colour = substr( $colour, 1 );
+    }
+    if ( strlen( $colour ) == 6 ) {
+            list( $r, $g, $b ) = array( $colour[0] . $colour[1], $colour[2] . $colour[3], $colour[4] . $colour[5] );
+    } elseif ( strlen( $colour ) == 3 ) {
+            list( $r, $g, $b ) = array( $colour[0] . $colour[0], $colour[1] . $colour[1], $colour[2] . $colour[2] );
+    } else {
+            return false;
+    }
+    $r = hexdec( $r );
+    $g = hexdec( $g );
+    $b = hexdec( $b );
+    return array( 'red' => $r, 'green' => $g, 'blue' => $b );
+}
+*/
+
+function hex2rgb(colour) {
+	var r,g,b;
+	if (colour.charAt(0) == '#') {
+		colour = colour.substr(1);
+	}
+	r = colour.charAt(0) + '' + colour.charAt(1);
+	g = colour.charAt(2) + '' + colour.charAt(3);
+	b = colour.charAt(4) + '' + colour.charAt(5);
+	r = parseInt(r, 16);
+	g = parseInt(g, 16);
+	b = parseInt(b, 16);
+	return r + "," + g + "," + b;
+}
+	
+console.log(hex2rgb("EEEEEE"));
+</script>

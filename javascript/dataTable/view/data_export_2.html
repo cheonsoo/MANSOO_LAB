@@ -1,0 +1,56 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<!-- <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script> -->
+
+
+</head>
+<body>
+	
+	test
+	<div id="container">
+		<table id="#my_table" style="width: 100%; height: 100%; border: 1px gray solid;"></table>
+	</div>
+	
+	<script type="text/javascript">
+		
+		let dataSet = [
+			{ "col1" : "col1", "col2" : "col2", "col3" : "col3", "col4" : "col4" },
+			{ "col1" : "col1", "col2" : "col2", "col3" : "col3", "col4" : "col4" },
+			{ "col1" : "col1", "col2" : "col2", "col3" : "col3", "col4" : "col4" },
+			{ "col1" : "col1", "col2" : "col2", "col3" : "col3", "col4" : "col4" }
+		];
+
+		$(document).ready(function() {
+			debugger;
+			// debugger;
+		    $('#my_table').DataTable( {
+
+		    	data : dataSet,
+		    	columnDefs : [
+			    	{ title : "col1", data : "col1" },
+			    	{ title : "col2", data : "col2" },
+			    	{ title : "col3", data : "col3" },
+			    	{ title : "col4", data : "col4" },
+		    	],
+		        // dom: 'Bfrtip',
+		        // buttons: [
+		        //     'copy', 'csv', 'excel', 'pdf', 'print'
+		        // ]
+		    });
+
+		});
+	</script>
+	
+</body>
+
+
+
+</html>

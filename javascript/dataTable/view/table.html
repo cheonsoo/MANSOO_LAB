@@ -1,0 +1,197 @@
+<html>
+<head>
+
+	<style>
+		body {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		}
+		.result_table {
+			font-size: 13px;
+    		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    		border-collapse: collapse !important;
+    		border-spacing: 0;
+    		/* table-layout: fixed; */
+    		/* white-space: nowrap; */
+    		/* width: 100%; */
+    		width: 100px !important;
+    		float: left;
+		}
+		.result_table, .result_table th, .result_table td {
+			border: 1px solid #ddd !important;
+		    text-align: left;
+		    padding: 8px;
+		}
+		.result_table thead {
+			background-color: #4CAF50;
+			color: #FFF;
+			font-weight: bolder;
+		}
+		.result_table td {
+			/* width: 100% !important; */
+		    white-space: nowrap;
+		    width: 1px;
+		}
+	</style>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script type='text/javascript' type='text/javascript' src='../js/jquery.dataTables.min.js'></script>
+	<link rel='stylesheet' type='text/css' href='../css/jquery.dataTables.min.css'>
+	<script type="text/javascript">
+		if (document.readyState !== "complete") {
+		    addEvent(window, "load", function() {
+		    	drawResultTable();
+		    	
+		    	
+		    	$.extend($.fn.dataTable.defaults, {
+		    		"border": false,
+		    		"paging": false,
+		    		"ordering": false,
+		    		"info": false,
+					"searching": false, // Disable searching
+					"aaSorting": [], // Disable initial sorting
+					"bLengthChange": false, // Disable changable page size
+					"bInfo": false, // // Disable displaying search info
+					"bAutoWidth": false // Disable the auto width calculation 
+				});
+		    	$("[name='result_table']").dataTable();
+		    });
+		}
+		function addEvent(element, event, func) {
+			if (element.addEventListener) {
+				element.addEventListener(event, func, true);
+			} else if (element.attachEvent) {
+				element.attachEvent("on" + event, func);
+			}
+		}
+		function drawResultTable() {
+			
+			//var response = {"took":6,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":7.2490096,"hits":[{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}}]}}
+			//var response = {"took":6,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":7.2490096,"hits":[{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}},{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}},{"_index":"01~analytics","_type":"Pages","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}},{"_index":"01~analytics","_type":"Campaign","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}}]}}
+			//var response = {"took":6,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":7.2490096,"hits":[{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}},{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}},{"_index":"01~analytics","_type":"Pages","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":"phone","FAX":"fax","HOMEPAGE":"homepage"}},{"_index":"01~analytics","_type":"Campaign","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD"}},{"_index":"01~analytics","_type":"Advertiser","_id":"25","_score":7.2490096,"_source":{"_ADVERTISERKEY":25,"ID":"unknown_advertiser","NAME":"unknown_advertiser","BILLINGMETHOD":"M","CURRENCY":"USD","EMAIL":null,"PHONE":null,"FAX":null,"HOMEPAGE":null,"ISGLOBALADVERTISER":"N","WHENCREATED":"04/23/2009 12:00:00","WHENMODIFIED":"04/23/2009 12:00:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia"}}]}}
+			var response = {"took":13,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":45,"max_score":1,"hits":[{"_index":"parisui~pd_smoke0728","_type":"Campaign","_id":"89386","_score":1,"_source":{"_CAMPAIGNKEY":89386,"CAMPAIGNMGR":null,"CAMPTYPE":"C","DESCRIPTION":null,"ID":"QA_RMF1_TEST_Paresh2408","NAME":"QA_RMF1_TEST_Paresh2408","INSERTIONORDER":null,"INVENTORYRESERVATION":"N","NOTES":null,"PRESSNOTES":null,"STATUS":"W","WHENCREATED":"2015-08-24T09:15:10.000-04:00","WHENMODIFIED":null,"WHOCREATED":"Paresh.danej","WHOMODIFIED":null,"Advertiser":{"ID":"Advertiser_0805","NAME":null},"Agency":{"ID":"Agency_0805","NAME":null},"Schedule":{"WEIGHT":0,"ENDTYPE":"S","SMOOTHORASAP":"S","IMPSCHEDULED":0,"STARTDATE":null,"ENDDATE":null,"PRIORITYLEVEL":0,"REACH":"D","PriFreImp":null,"PriFreClicks":null,"PriFreScope":null,"Clicks":0,"DailyReCalClicks":null,"TodayDailyImps":null,"CompanionPositions":null,"Pause":null,"Restart":null,"ManageDaily":" "},"Pages":{"URL":null},"Section":{"ID":null},"Billing":{"CPM":0,"CPC":0,"PAYMENTMETHOD":"C","CONTRACTEDAMOUNT":null,"TOTALBUDGET":0,"DAILYBUDGET":0},"Target":{"SEARCHTERM":null,"DOMAIN":null,"Country":null,"State":null,"City":null,"Zip":null,"DMA":null,"Continent":null,"Device":null,"DeviceGroup":null,"Manufacturer":null,"Carrier":null,"Segment":null,"AREACODE":null,"MSA":null,"Bandwidth":null},"InsertionOrder":{"ID":null},"CampaignGroup":{"ID":null},"_USERGROUPNAME":null}},{"_index":"parisui~pd_smoke0728","_type":"Campaign","_id":"89196","_score":1,"_source":{"_CAMPAIGNKEY":89196,"CAMPAIGNMGR":null,"CAMPTYPE":"C","DESCRIPTION":null,"ID":"CampTest","NAME":"CampTest","INSERTIONORDER":null,"INVENTORYRESERVATION":"N","NOTES":null,"PRESSNOTES":null,"STATUS":"W","WHENCREATED":"2015-07-29T09:46:01.000-04:00","WHENMODIFIED":"2015-07-29T09:48:23.000-04:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia","Advertiser":{"ID":"RealMedia","NAME":"RealMedia Inc"},"Agency":{"ID":"unknown_agency","NAME":"unknown_agency"},"Schedule":{"WEIGHT":0,"ENDTYPE":"S","SMOOTHORASAP":"S","IMPSCHEDULED":0,"STARTDATE":null,"ENDDATE":null,"PRIORITYLEVEL":0,"REACH":"D","PriFreImp":null,"PriFreClicks":null,"PriFreScope":null,"Clicks":0,"DailyReCalClicks":null,"TodayDailyImps":null,"CompanionPositions":null,"Pause":null,"Restart":null,"ManageDaily":" "},"Pages":{"URL":null},"Section":{"ID":null},"Billing":{"CPM":0,"CPC":0,"PAYMENTMETHOD":"C","CONTRACTEDAMOUNT":null,"TOTALBUDGET":0,"DAILYBUDGET":0},"Target":{"SEARCHTERM":null,"DOMAIN":null,"Country":null,"State":null,"City":null,"Zip":null,"DMA":null,"Continent":null,"Device":null,"DeviceGroup":null,"Manufacturer":null,"Carrier":null,"Segment":null,"AREACODE":null,"MSA":null,"Bandwidth":null},"InsertionOrder":{"ID":null},"CampaignGroup":{"ID":null},"_USERGROUPNAME":null}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"90282","_score":1,"_source":{"_CREATIVEKEY":90282,"ID":"RMF-VENDOR-20151223-182318","NAME":"RMF-VENDOR-20151223-182318_name","_CREATIVECAMPAIGNKEY":117913,"Campaign":{"ID":"QA_RMF1_TEST_Vikas2312","NAME":"QA_RMF1_TEST_Vikas2312","_CAMPAIGNMGR":"Paresh.danej","_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"__QUERY__","DESCRIPTION":null,"DIMENSIONS":"0x0","DISCOUNT":"N","DISPLAYFLAG":"Y","STARTDATE":null,"ENDDATE":null,"EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":"RMF-VENDOR-20151223-182318.html","FILESIZE":1214,"MEDIATYPE":"text/html"},"ISCOUNTONDOWNLOAD":"Y","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":null,"WEIGHT":10,"WHENCREATED":"2015-12-23T07:50:04.000-05:00","WHENMODIFIED":"2015-12-23T07:50:04.000-05:00","WHOCREATED":"Paresh.danej","WHOMODIFIED":"Paresh.danej","Positions":{"NAME":"x01"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"90287","_score":1,"_source":{"_CREATIVEKEY":90287,"ID":"VideoPodTop6_exp","NAME":"VideoPodTop6_exp","_CREATIVECAMPAIGNKEY":117913,"Campaign":{"ID":"QA_RMF1_TEST_Vikas2312","NAME":"QA_RMF1_TEST_Vikas2312","_CAMPAIGNMGR":"Paresh.danej","_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.appnexus.com","DESCRIPTION":null,"DIMENSIONS":"1x1","DISCOUNT":"Y","DISPLAYFLAG":"Y","STARTDATE":null,"ENDDATE":null,"EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":["http://01.parisde.qa.nym2.oasnexus.net/RealMedia/ads/Creatives/default/empty.gif","524D5F5641535431_VideoPodTop6_exp.jpg"],"FILESIZE":[0,9304],"MEDIATYPE":["Redirect","image/jpeg"]},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":null,"WEIGHT":10,"WHENCREATED":"2015-12-23T09:23:45.000-05:00","WHENMODIFIED":"2015-12-23T09:23:45.000-05:00","WHOCREATED":"VTAdm_15.4user","WHOMODIFIED":"VTAdm_15.4user","Positions":{"NAME":"TopLeft"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"81104","_score":1,"_source":{"_CREATIVEKEY":81104,"ID":"VideoVASTV2_20150730-170316_vast_Bottom1","NAME":"VideoVASTV2_20150730-170316_vast","_CREATIVECAMPAIGNKEY":89213,"Campaign":{"ID":"QA_RMF_TEST__Paresh_20150707_2","NAME":"QA_RMF_TEST__Paresh_20150707_2","_CAMPAIGNMGR":null,"_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.google.com?redirect=13&icu11&location=Horsham","DESCRIPTION":null,"DIMENSIONS":"123x123","DISCOUNT":"Y","DISPLAYFLAG":"Y","STARTDATE":"07/30/2015","ENDDATE":"07/30/2015","EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":"VideoVASTV2_20150730-170316_vast_Bottom1.xml","FILESIZE":2668,"MEDIATYPE":"text/xml"},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":null,"WEIGHT":10,"WHENCREATED":"2015-07-30T07:55:21.000-04:00","WHENMODIFIED":"2015-07-30T07:55:21.000-04:00","WHOCREATED":"Paresh.danej","WHOMODIFIED":"Paresh.danej","Positions":{"NAME":"Bottom1"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"81109","_score":1,"_source":{"_CREATIVEKEY":81109,"ID":"Video0730_vast_Position1","NAME":"Video0730_vast","_CREATIVECAMPAIGNKEY":89213,"Campaign":{"ID":"QA_RMF_TEST__Paresh_20150707_2","NAME":"QA_RMF_TEST__Paresh_20150707_2","_CAMPAIGNMGR":null,"_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.yahoo.com","DESCRIPTION":null,"DIMENSIONS":"0x0","DISCOUNT":"Y","DISPLAYFLAG":"Y","STARTDATE":null,"ENDDATE":null,"EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":["Video0730_vast_Position1.xml","524D5F5641535431_Video0730_vast_Position1.f4v"],"FILESIZE":[4550,4876280],"MEDIATYPE":["text/xml","video/x-flv"]},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":null,"WEIGHT":10,"WHENCREATED":"2015-07-30T09:04:41.000-04:00","WHENMODIFIED":"2015-07-30T09:04:41.000-04:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia","Positions":{"NAME":"Position1"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"81111","_score":1,"_source":{"_CREATIVEKEY":81111,"ID":"PopupUnderFlash","NAME":"PopupUnderFlash_name","_CREATIVECAMPAIGNKEY":89213,"Campaign":{"ID":"QA_RMF_TEST__Paresh_20150707_2","NAME":"QA_RMF_TEST__Paresh_20150707_2","_CAMPAIGNMGR":null,"_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.yahoo.com","DESCRIPTION":null,"DIMENSIONS":"280x60","DISCOUNT":"N","DISPLAYFLAG":"Y","STARTDATE":null,"ENDDATE":null,"EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":["PopupUnderFlash.html","280x60_easter.swf","TFSMFlashWrapper301.js"],"FILESIZE":[8963,18271,3343],"MEDIATYPE":["text/html","multipart/form-data","application/x-javascript"]},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":"_blank","WEIGHT":10,"WHENCREATED":"2015-07-30T09:08:46.000-04:00","WHENMODIFIED":"2015-07-30T09:08:46.000-04:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia","Positions":{"NAME":"Right1"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"81205","_score":1,"_source":{"_CREATIVEKEY":81205,"ID":"crrmf24082015","NAME":"crrmf24082015_name","_CREATIVECAMPAIGNKEY":89213,"Campaign":{"ID":"QA_RMF_TEST__Paresh_20150707_2","NAME":"QA_RMF_TEST__Paresh_20150707_2","_CAMPAIGNMGR":null,"_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.google.com","DESCRIPTION":null,"DIMENSIONS":"300x250","DISCOUNT":"N","DISPLAYFLAG":"Y","STARTDATE":null,"ENDDATE":null,"EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":["crrmf24082015.html","TFSMFlashWrapper301.js","Logo.swf"],"FILESIZE":[1119,3343,32183],"MEDIATYPE":["text/html","application/x-javascript","multipart/form-data"]},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":null,"WEIGHT":10,"WHENCREATED":"2015-08-24T07:09:14.000-04:00","WHENMODIFIED":"2015-08-24T07:09:15.000-04:00","WHOCREATED":"realmedia","WHOMODIFIED":"realmedia","Positions":{"NAME":"Bottom"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"90276","_score":1,"_source":{"_CREATIVEKEY":90276,"ID":"RMF-B-IMAGE-20151223-182318","NAME":"RMF-B-IMAGE-20151223-182318_name","_CREATIVECAMPAIGNKEY":117913,"Campaign":{"ID":"QA_RMF1_TEST_Vikas2312","NAME":"QA_RMF1_TEST_Vikas2312","_CAMPAIGNMGR":"Paresh.danej","_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.google.com/#hl=en&source=hp&q=24%2F7+Real+Media&aq=f&aqi=g10&aql=&oq=&gs_rfai=C_R-4MQEITLHuBKDSgwTT-_jFCgAAAKoEBU_QQQdH&fp=f5f12e03cde16576","DESCRIPTION":null,"DIMENSIONS":"241x64","DISCOUNT":"N","DISPLAYFLAG":"Y","STARTDATE":"12/23/2015","ENDDATE":"12/30/2015","EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":"RMF-B-IMAGE-20151223-182318.html","FILESIZE":253,"MEDIATYPE":"text/html"},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":null,"WEIGHT":10,"WHENCREATED":"2015-12-23T07:43:47.000-05:00","WHENMODIFIED":"2015-12-23T07:43:47.000-05:00","WHOCREATED":"Paresh.danej","WHOMODIFIED":"Paresh.danej","Positions":{"NAME":"Top"}}},{"_index":"parisui~pd_smoke0728","_type":"Creative","_id":"90283","_score":1,"_source":{"_CREATIVEKEY":90283,"ID":"PopupUnder-Flash1223","NAME":"PopupUnder-Flash1223_name","_CREATIVECAMPAIGNKEY":117913,"Campaign":{"ID":"QA_RMF1_TEST_Vikas2312","NAME":"QA_RMF1_TEST_Vikas2312","_CAMPAIGNMGR":"Paresh.danej","_USERGROUPNAME":null},"ALTTEXT":null,"ANYPOSITIONFLAG":"N","CACHEFLAG":"N","CLICKURL":"http://www.yahoo.com","DESCRIPTION":null,"DIMENSIONS":"280x60","DISCOUNT":"N","DISPLAYFLAG":"Y","STARTDATE":null,"ENDDATE":null,"EXPIREFLAG":"N","EXTRAHTML":null,"Files":{"NAME":["PopupUnder-Flash1223.html","TFSMFlashWrapper301.js","280x60_easter.swf"],"FILESIZE":[6641,3343,18271],"MEDIATYPE":["text/html","application/x-javascript","multipart/form-data"]},"ISCOUNTONDOWNLOAD":"N","REDIRECTURL":"redirectURL","RICHMEDIACPM":0,"TARGET":"_blank","WEIGHT":10,"WHENCREATED":"2015-12-23T08:50:29.000-05:00","WHENMODIFIED":"2015-12-23T08:50:29.000-05:00","WHOCREATED":"VTAdm_15.4user","WHOMODIFIED":"VTAdm_15.4user","Positions":{"NAME":"Top1"}}}]}}
+			
+			var resultArr = new Array();
+			splitResultArray(resultArr, response.hits.hits);
+			
+			$.each(resultArr, function(idx, items) {
+				drawResultTableByType(items);
+			});
+			
+			//console.log("test");
+			
+		}
+		function splitResultArray(resultArr, results) {
+			
+			if (results.length == 1) {
+				resultArr.push(results);
+				return false;
+			}
+			
+			var prevType = "";
+			$.each(results, function(idx, items) {
+				//console.log(items._type);
+				if (prevType == "") {
+					// pass
+				} else if (prevType == items._type) {
+					// pass
+				} else {
+					var arr1 = results.splice(0, idx);
+					var arr2 = results;
+					resultArr.push(arr1);
+					splitResultArray(resultArr, arr2);
+					return false;
+				}
+				prevType = items._type;
+			});
+			return resultArr;
+		}
+		function drawResultTableByType(items) {
+			
+			// Head
+			var thead = document.createElement("thead");
+			thead.className = "result_table_header";
+			var thead_tr = document.createElement("tr");
+			var thead_td;
+			$.each(items, function(idx, item) {
+				//console.log(item._source);
+				$.each(item._source, function(key, value) {
+					//console.log(key, value);
+					
+					thead_td = document.createElement("td");
+					thead_td.innerHTML = key;
+					thead_tr.appendChild(thead_td);
+					
+				});
+				thead.appendChild(thead_tr);
+				return false;
+			});
+			
+			// Body
+			var tbody = document.createElement("tbody");
+			tbody.className = "result_table_body";
+			var tbody_tr;
+			var tbody_td;
+			$.each(items, function(idx, item) {
+				tbody_tr = document.createElement("tr");
+				$.each(item._source, function(key, value) {
+					//console.log(key, value);
+					
+					tbody_td = document.createElement("td");
+					tbody_td.innerHTML = value;
+					tbody_tr.appendChild(tbody_td);
+					
+				});
+				tbody.appendChild(tbody_tr);
+			});
+			
+			var result_table = document.createElement("table");
+			result_table.className = "result_table";
+			result_table.appendChild(thead);
+			result_table.appendChild(tbody);
+			
+			$(result_table).attr("name", "result_table");
+			
+			$("#resultContainer").append("<br /><h3>"+items[0]._type.toUpperCase()+"</h3>");
+			$("#resultContainer").append(result_table);
+		}
+		function exportResultToExcel() {
+			console.log($("#resultContainer").html());
+		}
+		function downloadExcel() {
+			var link = document.createElement('a');
+			link.download = 'output.xlsx'
+			link.href = 'http://localhost/downloads/output.xlsx';
+			var clickEvent = document.createEvent("MouseEvent");
+			clickEvent.initEvent("click", true, true);
+			link.dispatchEvent(clickEvent);
+		}
+		
+/*
+response.setContentType("application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+response.setHeader("Content-Disposition", "attachment;filename=CampaignListExport.xlsx");
+*/
+		
+	</script>
+</head>
+<body>
+	
+	<h3>RESULT</h3>
+	
+	<div>
+		<input type="button" id="exportResultToExcelBtn" value="export" onclick="exportResultToExcel()" />
+		<a href="javascript:downloadExcel(this)">DOWNLOAD EXCEL</a>
+	</div>
+	
+	<div id="resultContainer">
+	</div>
+	
+<iframe id="my_iframe" style="display:none;"></iframe>
+<script>
+function Download(url) {
+    document.getElementById('my_iframe').src = url;
+};
+</script>
+	
+	
+</body>
+</html>

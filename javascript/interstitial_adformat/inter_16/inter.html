@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="appnexus_interstitial_ad_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+if (document.readyState !== "complete") {
+    addEvent(window, "load", function() {
+    	loadInterstitial();
+    });
+}
+function addEvent(element, event, func) {
+	if (element.addEventListener) {
+		element.addEventListener(event, func, true);
+	} else if (element.attachEvent) {
+		element.attachEvent("on" + event, func);
+	}
+}
+function loadInterstitial() {
+	var testad_PREVIEW = AppNexusAdTemplate;
+	testad_PREVIEW.AppNexInterstitial.conf._timer_xbtn = 2;
+	testad_PREVIEW.AppNexInterstitial.conf._show_close_x = true;
+	testad_PREVIEW.AppNexInterstitial.conf._timer_close = 150;
+	testad_PREVIEW.AppNexInterstitial.conf._bg_opacity = 0.5;
+	testad_PREVIEW.AppNexInterstitial.conf._bg_color = "#000000";
+	testad_PREVIEW.AppNexInterstitial.conf._click_url = "http://google.com";
+	testad_PREVIEW.AppNexInterstitial.conf._adImages = [ "mobile_portrait.jpg" ];
+	testad_PREVIEW.AppNexInterstitial.init();
+}
+</script>
+</head>
+<body style="background-color: #DDD; text-align: left;">
+	<div style="font-size:10px; text-align: left;">
+		<a href="http://google.com">google</a>
+		<h1>TEST1</h1>
+	</div>
+	<div id="testdiv" style="fond-size: 50px"></div>
+</body>
+</html>

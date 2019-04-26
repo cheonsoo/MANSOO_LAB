@@ -1,0 +1,49 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    function callAPI(i, _callback) {
+        var requestUrl = "http://localhost:8893/api/system/info";
+        $.ajax({
+            url: requestUrl,
+            type: "GET",
+            processData: false,
+            contentType: "application/json"
+        }).fail(function(jqXHR, status) {
+            console.log("fail", jqXHR);
+        }).done(function(res) {
+            var rand = Math.random();
+            console.log(rand + " : " + JSON.stringify(res));
+
+            if (i == 9) {
+                _callback(rand);
+            }
+
+        });
+    }
+
+    $(document).ready(function() {
+
+        console.log("start");
+
+        var idx = 10;
+        for (var i=0; i<idx; i++) {
+
+            var _callback = function(str) {
+                // TO DO SOMETHING
+                var msgDiv = $("<div></div>");
+                msgDiv.text("All async jobs are finished." + str);
+                $("body").append(msgDiv);
+            };
+
+            callAPI(i, _callback);
+        }
+
+        console.log("end of code");
+    });
+
+</script>
+
+<body>
+
+</body>
