@@ -1,0 +1,25 @@
+{
+  "name": "mansoo_lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheonsoo/MANSOO_LAB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheonsoo/MANSOO_LAB/issues"
+  },
+  "homepage": "https://github.com/cheonsoo/MANSOO_LAB#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}

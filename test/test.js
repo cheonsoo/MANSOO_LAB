@@ -1,16 +1,19 @@
-let arr = [10,5,2,1,-2,-3,-10];
+function factorial( i ) {
+    if ( i === 0 ) {
+        return 1;
+    }
 
-for ( let i=0; i<arr.length; i++ ) {
-	console.log( arr[ i ] );
-	if ( arr[ i ] === -2 ) {
-		console.log( `### value : ${arr[ i ]}` );
-		continue;
-		console.log( "###" );
-	}
-	console.log( `value : ${arr[ i ]}` );
+    return i * factorial( i - 1);
 }
 
-console.log( arr );
+let a = 4;
+let b = 7;
 
-// 1,2,3,4,5,6
-// N*(N+1)/2
+let sum = 0;
+for ( let i=0; i<4; i++ ) {
+	for ( let k=4; k>0; k-- ) {
+		sum += factorial( k-i );
+	}
+}
+
+console.log( sum );
