@@ -33,6 +33,7 @@ let data = {
 
 console.log( `### Start` );
 
+let cnt = 0;
 for ( let i=1; i<=edge; i++ ) {
 
     let current = data[ `loc_${i}` ];
@@ -67,11 +68,12 @@ for ( let i=1; i<=edge; i++ ) {
     if ( largest > 0 ) {
         current.covered = true;
         side.covered = true;
-
-        console.log( `### current : ${current.location}, side : ${side.location} matched.` );
+        cnt++;
+        console.log( `### cnt : ${cnt}, current : ${current.location}, side : ${side.location} matched.` );
     }
 }
 
+console.log( `### result : ${cnt + edge - (cnt*2)}` );
 
 function getRight( data, pos ) {
     // check if it's in edge
@@ -92,9 +94,9 @@ function getLeft( data, pos ) {
 
 function getBottom( data, pos ) { // Or Top
     if ( num_division < pos && pos <= edge ) {
-        return data[ `loc_${pos-(num_division-1)}` ];
+        return data[ `loc_${pos-(num_division)}` ];
     } else {
-        return data[ `loc_${pos+(num_division-1)}` ];
+        return data[ `loc_${pos+(num_division)}` ];
     }
 }
 
