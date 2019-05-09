@@ -7,4 +7,4 @@ function fibo( i ) {
     return i * fibo( i - 1);
 }
 
-console.log( fibo( 10 ) );
+console.log( fibo( 4 ) );
