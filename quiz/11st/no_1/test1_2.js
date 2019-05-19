@@ -1,12 +1,13 @@
 // you can write to stdout for debugging purposes, e.g.
 // console.log('this is a debug message');
 
+let start = new Date();
 
-//*// Using Recursive
 function solution(N) {
     // write your code in JavaScript (Node.js 8.9.4)
 
     let stack = [];
+    let memo = {};
 
     function getLargestButSmallerThanN( number ) {
     
@@ -14,7 +15,14 @@ function solution(N) {
             return 0;
         }
         
+        if ( memo[ number ] ) {
+            return memo[ number ];
+        }
+
         let current = getLargestButSmallerThanN( number - 1 ) + number;
+        memo[ number ] = current;
+        // console.log( `N : ${N}, number : ${number}, current : ${current}` );
+
         if ( current < N ) {
             stack.push( current );
         }
@@ -27,17 +35,7 @@ function solution(N) {
 
     return stack.length;
 }
-/*/ // Very Simple Solution Just To Get The Answer
-function solution(N) {
-    let largestButSmallerThanN = 0;
-    let prev = 0;
-    for ( let i=1; i<=N; i++ ) {
-        let current = prev = i + prev;
-        if ( current >= N ) {
-            largestButSmallerThanN = i - 1;
-            break;
-        }
-    }
-    return largestButSmallerThanN;
-}
-//*/
+
+console.log( solution( 1000 ) );
+
+console.log( `exe time : ${new Date() - start}` );
