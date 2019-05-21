@@ -4,11 +4,12 @@
 
 let start = new Date().getTime();
 
-//* //
+//* // Fibonacci function with recursion
 function fibonacci( i ) {
     let memo = {};
 
     function fibo( i ) {
+
         if ( i <= 1 )
             return i;
 
@@ -17,8 +18,6 @@ function fibonacci( i ) {
         
         let val1 = fibo( i - 1 );
         let val2 = fibo( i - 2 );
-        // let val1 = memo[ i - 2 ] || fibo( i - 2 );
-        // let val2 = memo[ i - 1 ] || fibo( i - 1 );
         let result = val1 + val2;
         memo[ i ] = result;
         return result;
@@ -26,11 +25,10 @@ function fibonacci( i ) {
 
     return fibo( i );
 }
-/*/
+/*/ // Common Fibonacci Function
 function fibonacci( i ) {
-    if ( i <= 1 ) {
+    if ( i <= 1 )
         return i;
-    }
 
     return fibonacci( i - 1 ) + fibonacci( i - 2 );
 }

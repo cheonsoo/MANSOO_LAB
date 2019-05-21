@@ -1,0 +1,23 @@
+<script type="text/javascript">
+function fn1( evt ) {
+    // evt.stopPropagation();
+    evt.stopImmediatePropagation();
+    alert( 1 );
+}
+
+function fn2( evt ) {
+    // evt.stopPropagation()
+    // evt.stopImmediatePropagation();
+    alert( 2 );
+}
+
+function fn3( evt ) {
+    alert( 3 );
+}
+</script>
+
+<form onclick="fn3( event )">FORM
+    <div onclick="fn2( event )">DIV
+        <p onclick="fn1( event )">P</p>
+    </div>
+</form>
