@@ -1,0 +1,32 @@
+<input type="text" id="inputa" />
+<input type="text" id="inputb" />
+<input type="text" id="inputc" />
+
+<div id="notice"></div>
+
+<script type="text/javascript">
+function notice( help ) {
+    console.log( "### " + help );
+    document.getElementById( "notice" ).innerHTML = help;
+}
+
+function setupNotice() {
+    var data = [
+        { id : "inputa", val : "inputa" },
+        { id : "inputb", val : "inputb" },
+        { id : "inputc", val : "inputc" },
+    ];
+
+    for ( let i=0; i<data.length; i++ ) {
+        let item = data[ i ];
+        // debugger;
+        // document.getElementById( item.id ).onfocus = notice( item.val );
+        // document.getElementById( item.id ).on( "focus", notice );
+        document.getElementById( item.id ).addEventListener( "focus", function() {
+            notice( item.val ) 
+        });
+    }
+}
+
+setupNotice();
+</script>

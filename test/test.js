@@ -1,2 +1,10 @@
+var hero = {
+    name : "cpark",
+    getName : function() {
+        return this.name;
+    }
+};
 
-console.log( Math.pow( Math.floor( 3.49 ), 2 ) );
+var a = hero.getName;
+console.log( a() );
+console.log( hero.getName() );
