@@ -20,11 +20,11 @@ function setupNotice() {
     for ( let i=0; i<data.length; i++ ) {
         let item = data[ i ];
         // debugger;
-        // document.getElementById( item.id ).onfocus = notice( item.val );
+        document.getElementById( item.id ).onfocus = function() {
+            notice( item.val );
+        }
         // document.getElementById( item.id ).on( "focus", notice );
-        document.getElementById( item.id ).addEventListener( "focus", function() {
-            notice( item.val ) 
-        });
+        // document.getElementById( item.id ).addEventListener( "focus", function() { notice( item.val ) });
     }
 }
 
